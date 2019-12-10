@@ -56,7 +56,7 @@ class War {
     addSaxon(object){
         this.saxonArmy.push(object)
     }
-    vikingAttack(){
+    vikingAttack(){       
         this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)].receiveDamage(this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)].strength);
         let saxonHealth = this.saxonArmy.map( (eachSaxon)=>{
             return eachSaxon.health;
@@ -69,8 +69,15 @@ class War {
         let vikingHealth = this.vikingArmy.map( (eachViking)=>{
             return eachViking.health;
         })
-        this.vikingArmy.splice(vikingHealth.indexOf(0))
+
+        vikingHealth.forEach( (health, i) =>{
+            if(vikingHealth[i] == 0){
+                this.vikingArmy.splice(i);
+                vikingHealth.splice(i);
+            }
+        })
     }
+    
     showStatus(){
         if(this.saxonArmy.length == 0){
             return `Vikings have won the war of the century!`
