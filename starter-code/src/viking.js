@@ -64,7 +64,11 @@ class War {
             return eachSaxon.health;
         })
         this.saxonArmy.splice(saxonHealth.indexOf(0))
-        return 
+        if(saxonHealth.indexOf(0)){
+            return `A Saxon has died in combat`
+        }else{
+            return `A Saxon has received ${this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength} points of damage`
+        }
     }
     saxonAttack() {
         this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].receiveDamage(this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength);
@@ -77,7 +81,7 @@ class War {
                 vikingHealth.splice(i);
             }
         })
-        return 
+        return `Harald has received 25 points of damage`
     }
 
     showStatus() {
